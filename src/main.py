@@ -1,19 +1,16 @@
+from src.core.features import (
+    list_all_products_in_store,
+    show_total_amount_in_store,
+    make_order
+)
 from src.products import products
 from src.stores import store
+from utils.helpers import get_menu_choice
 
 
-def get_menu_choice():
-    menu_choice = input("\nEnter command: ")
-    if menu_choice.isdigit() and 0 <= menu_choice <= 3:
-
-        return int(menu_choice)
-
-    print("Please enter a number between 0 and 3!")
-
-
-def start(store_object):
+def start(store_selection):
     menu = {
-        0: ("0. Exit", exit),
+        0: ("0. Exit", None),
         1: ("1. List all products in store", list_all_products_in_store),
         2: ("2. Show total amount in store", show_total_amount_in_store),
         3: ("3. Make an order", make_order)
@@ -22,19 +19,18 @@ def start(store_object):
     while True:
         print("\n   Store Menu")
         print("   ----------")
-        for command in menu.values():
-            print(command[0])
+        for key in sorted(menu.keys()):
+            print(menu[key][0])
 
         menu_choice = get_menu_choice()
 
-        if menu_choice == "0":
+        if menu_choice == 0:
             print("\nGoodbye!")
-
             break
 
         command = menu.get(menu_choice)
         if command and command[1]:
-            command[1](store_object)
+            command[1](store_selection)
 
 
 def main():
