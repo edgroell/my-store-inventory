@@ -1,4 +1,5 @@
-import products
+from src import products
+
 
 class Store:
 
