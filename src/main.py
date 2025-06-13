@@ -11,7 +11,7 @@ from src.core.features import (
 )
 from src.products import products
 from src.stores import store
-from utils.helpers import get_menu_choice
+from src.utils.helpers import get_menu_choice
 
 def start(store_selection: store.Store) -> None:
     """ Prints & executes the menu commands flow """
