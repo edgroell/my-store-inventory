@@ -1,3 +1,9 @@
+"""
+Program: my-store-inventory
+Author: Ed Groell
+Date: 13-JUN-2025
+"""
+
 from src.core.features import (
     list_all_products_in_store,
     show_total_amount_in_store,
@@ -7,8 +13,8 @@ from src.products import products
 from src.stores import store
 from utils.helpers import get_menu_choice
 
-
-def start(store_selection):
+def start(store_selection: store.Store) -> None:
+    """ Prints & executes the menu commands flow """
     menu = {
         0: ("0. Exit", None),
         1: ("1. List all products in store", list_all_products_in_store),
@@ -34,6 +40,7 @@ def start(store_selection):
 
 
 def main():
+    """ Initiates the program """
     # setup initial stock of inventory
     product_list = [products.Product("MacBook Air M2", price=1450, quantity=100),
                     products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),

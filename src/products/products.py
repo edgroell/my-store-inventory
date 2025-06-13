@@ -1,6 +1,12 @@
-class Product:
+"""
+Module containing the Product class and its properties.
+"""
 
-    def __init__(self, name, price, quantity):
+class Product:
+    """ Defines all properties of a product instance """
+
+    def __init__(self, name: str, price: float, quantity: int):
+        """ Constructor that initializes a product instance """
         if not name:
             raise Exception("Product name is required!")
 
@@ -20,16 +26,19 @@ class Product:
 
 
     def __str__(self):
+        """ Method that returns a string representation of the product """
 
         return self.name
 
 
     def get_quantity(self) -> int:
+        """ Returns the inventory's quantity of the product """
 
         return self.quantity
 
 
     def set_quantity(self, quantity: int) -> None:
+        """ Sets the inventory's quantity of the product """
         if quantity < 0:
             raise Exception("Product quantity can't be negative!")
 
@@ -43,23 +52,31 @@ class Product:
 
 
     def is_active(self) -> bool:
+        """ Returns True if the product is active """
 
         return self.active
 
 
     def activate(self) -> None:
+        """ Set the product to active """
         self.active = True
 
 
     def deactivate(self) -> None:
+        """ Set the product to inactive """
         self.active = False
 
 
     def show(self) -> None:
+        """ Prints the product properties (name, price, quantity) """
         print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
 
 
     def buy(self, quantity: int) -> float:
+        """
+        Executes the purchase of the product
+        based on given quantity versus available quantity
+        """
         if not self.is_active():
             raise Exception("Product is not active!")
 

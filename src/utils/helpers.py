@@ -1,4 +1,15 @@
-def get_menu_choice():
+"""
+Module containing all helpers required in the program.
+"""
+
+from src.products import products
+from src.stores import store
+
+def get_menu_choice() -> int:
+    """
+    Captures the menu selection from the user
+    :return: menu_choice: int
+    """
     while True:
         try:
             menu_choice = int(input("\nEnter command (0-3): ").strip())
@@ -12,7 +23,14 @@ def get_menu_choice():
             print("Please enter a valid number (0-3)!")
 
 
-def get_product_selection(store_selection):
+def get_product_selection(store_selection: store.Store) -> None | products.Product:
+    """
+    Captures the product selection from the user
+    :param store_selection: store.Store
+    :return:
+        None
+        product_to_add: product.Product
+    """
     while True:
         product_selection = input("Which product # do you want? ").strip()
         if product_selection == "":
@@ -31,7 +49,12 @@ def get_product_selection(store_selection):
             print("Please enter a valid number!")
 
 
-def get_product_quantity(product_selection):
+def get_product_quantity(product_selection: products.Product) -> int:
+    """
+    Captures the product quantity from the user
+    :param product_selection: products.Product
+    :return: product_quantity: int
+    """
     while True:
         try:
             product_quantity = int(input(f"What amount of {product_selection} do you want? ").strip())
@@ -48,7 +71,12 @@ def get_product_quantity(product_selection):
             print("Please enter a valid number!")
 
 
-def get_order_selection(store_selection):
+def get_order_selection(store_selection: store.Store) -> list:
+    """
+    Collects a list of tuples containing the product selection and the desired quantity
+    :param store_selection: store.Store
+    :return: order_selection: list
+    """
     print("\nWhen you're done with your order, enter empty text.")
     order_selection = []
 
