@@ -19,7 +19,13 @@ class Product:
         self.active = True
 
 
+    def __str__(self):
+
+        return self.name
+
+
     def get_quantity(self) -> int:
+
         return self.quantity
 
 
@@ -37,6 +43,7 @@ class Product:
 
 
     def is_active(self) -> bool:
+
         return self.active
 
 
